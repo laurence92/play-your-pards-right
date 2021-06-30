@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
 
   def compare_players(player1, player2)
     if player1.goals > player2.goals
-      return player1
+      return player1.name
     else
-      return player2
+      return player2.name
     end
   end
 
