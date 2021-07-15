@@ -3,6 +3,7 @@
 <p>Who scored more goals in the premier league?</p>
   <div  class='btn btn-nice' id=player_1 >
     <% player_1 = random_player %>
+    <%= cl_image_tag(player_1.photos.first.key)%>
     <%="#{player_1.name}"%>
   </div>
     <p>or</p>
