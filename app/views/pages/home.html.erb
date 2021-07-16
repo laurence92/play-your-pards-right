@@ -1,48 +1,52 @@
 <h1>Hello Pards</h1>
 
 <p>Who scored more goals in the premier league?</p>
-  <div  class='btn btn-nice' id=player_1 >
-    <% player_1 = random_player %>
-    <%= cl_image_tag(player_1.photos.first.key)%>
-    <%="#{player_1.name}"%>
+  <div class='buttons'>
+    <div  class='btn btn-player' id='player_1'>
+      <% @player_1 = random_player %>
+      <%= cl_image_tag(@player_1.photos.first.key)%>
+        <div class='btn btn-nice'>
+          <%="#{@player_1.name}"%>
+        </div>
+    </div>
+      <p>or</p>
+    <div class='btn btn-player' id='player_2'>
+      <% @player_2 = random_player %>
+      <%= cl_image_tag(@player_2.photos.first.key)%>
+        <div class='btn btn-nice'>
+          <%="#{@player_2.name}"%>
+        </div>
+    </div>
   </div>
-    <p>or</p>
-  <div class='btn btn-nice' id=player_2 >
-    <% player_2 = random_player %>
-    <%= "#{player_2.name}"%>
-  </div>
-
   <div id="counter">
-    <%= counter = 0 %>
+    <%= @counter = 0 %>
   </div>
 
-  <div id="winner">
-    <%= winner = compare_players(player_1, player_2) %>
-  </div>
+  <% @winner = compare_players(@player_1, @player_2) %>
 
   <script>
     let player1Button = document.getElementById("player_1");
     let player2Button = document.getElementById("player_2");
-    let winner = document.getElementById("winner");
-    let counter = document.getElementById("counter");
+    let correctChoice = '<%= @winner %>';
+    let counter = '<%= @counter %>';
 
       player1Button.addEventListener("click", (event) => {
-          // console.log(counter)
-          if (player_1.innerHTML == winner.innerHTML){
-            event.target.innerText = "Correct!";
-            <%# event.target.counter + 1;
-            counter + 1
-            console.log(counter) %>
-          } else {
-            event.target.innerText = "Incorrect!";
-          }
+          console.log(correctChoice)
+          console.log(player_1.innerText)
+          if (player_1.innerText == correctChoice){
+            console.log('<%= @counter +=1 %>');
+           } else {
+            console.log('<%= @counter = 0 %>');
+           }
         });
 
       player2Button.addEventListener("click", (event) => {
-          if (player_2.innerHTML == winner.innerHTML){
-            event.target.innerText = "Correct!";
-          } else {
-            event.target.innerText = "Incorrect!";
-          }
+          console.log(correctChoice)
+          console.log(player_2.innerText)
+          if (player_2.innerText == correctChoice){
+            console.log('<%= @counter +=1 %>');
+           } else {
+            console.log('<%= @counter = 0 %>');
+           }
         });
   </script>

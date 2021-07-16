@@ -11,3 +11,12 @@
   background-color: white;
   transition: 0.3s;
 }
+
+.btn-player{
+  display: flex;
+  flex-direction: column;
+  img {
+    width: auto;
+    height: 400px;
+  }
+}
